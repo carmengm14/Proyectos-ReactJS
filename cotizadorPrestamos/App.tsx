@@ -1,13 +1,18 @@
 import React from "react";
-import { StyleSheet, View, Text, SafeAreaView, StatusBar } from "react-native";
+import { StyleSheet, View, Text, SafeAreaView, StatusBar, YellowBox } from "react-native";
 import colors from "./src/utils/colors.js";
+import Form from "./src/components/Form.js";
+
+YellowBox.ignoreWarnings([])
+
 
 export default function App(){
   return(
     <>
     <StatusBar barStyle= "light-content"/>
       <SafeAreaView style={styles.safeArea}>
-        <Text>Formulario HEAD</Text>
+        <Text style={styles.titleApp}>Cotizador de Préstamos</Text>
+        <Form />
       </SafeAreaView>
 
       <View>
@@ -28,5 +33,12 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: "center",
+  },
+  titleApp: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginTop: 15,
+
   },
 });
