@@ -8,7 +8,8 @@ import colors from '../utils/colors';
  
  
 export default function Form({ setCapital, setInterest, setMonths }) {
- 
+  //export default function Form({ props }) {
+  //const {setCapital, setInterest, setMonths} = props;
   const [value, setValue] = useState(null);
  
   const data = [
