@@ -17,6 +17,12 @@ export default function App(){
   const[interest, setInterest] = useState(null);
   const[months, setMonths] = useState(null);
 
+  const calculate = () => {
+    console.log('capital ->' , capital);
+    console.log('interest ->', interest);
+    console.log('months ->', months);
+  }
+
   return(
     <>
     <StatusBar barStyle= "light-content"/>
@@ -34,7 +40,7 @@ export default function App(){
       </View>
 
       <View>
-        <Footer />
+        <Footer calculate={calculate}/>
       </View>
     </>
   );
