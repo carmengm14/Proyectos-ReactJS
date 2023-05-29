@@ -8,6 +8,8 @@ import { StyleSheet,
 import colors from "./src/utils/colors.js";
 import Form from "./src/components/Form.js";
 import Footer from "./src/components/Footer.js";
+import ResultCalculation from "./src/components/ResultCalculation.js";
+import { State } from "react-native-gesture-handler";
 
 //YellowBox.ignoreWarnings([])
 
@@ -16,11 +18,28 @@ export default function App(){
   const[capital, setCapital ] = useState(null);
   const[interest, setInterest] = useState(null);
   const[months, setMonths] = useState(null);
+  const[total, setTotal] = useState(null) ;
+  const[errorMessage, setErrorMessage]=useState('');
 
   const calculate = () => {
-    console.log('capital ->' , capital);
-    console.log('interest ->', interest);
-    console.log('months ->', months);
+    if(!capital){
+      setErrorMessage("Añade la cantidad a solicitar");
+    }else if(!interest){
+      setErrorMessage("Añade el interes del préstamo");
+
+    }else if(!months){
+      setErrorMessage("Selecciona los meses a financiar");
+    }else{
+      const i = interest / 100;
+      const fee = capital / ((1 - Math.pow(i + 1, -months)) / i);
+      /*setTotal({
+        monthlyFee: fee.toFixed(2).replace('.', ','),
+        totalPayable: (fee*months).toFixed(2).replace('.',','),
+      })*/
+      console.log(fee.toFixed(2).replace('.', ','));
+      console.log("Total: ", (fee*months).toFixed(2).replace('.',','));
+      console.log(fee * months);
+    }
   }
 
   return(
@@ -36,7 +55,7 @@ export default function App(){
       </SafeAreaView>
 
       <View>
-      <Text>Resultado</Text>
+      <ResultCalculation errorMessage={errorMessage}/>
       </View>
 
       <View>
