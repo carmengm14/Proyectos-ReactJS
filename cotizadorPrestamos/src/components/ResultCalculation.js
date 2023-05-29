@@ -8,7 +8,7 @@ export default function ResultCalculation(props){
       <View>
         {total && <Text>RESULTADO TOTAL</Text>};
         <View>
-            <Text style = {styles.error}>{errorMessage}</Text>
+            <Text style = {styles.error}>{errorMessage}</Text>>
         </View>
       </View>
     );
