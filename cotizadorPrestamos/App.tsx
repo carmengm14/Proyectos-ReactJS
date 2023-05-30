@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { StyleSheet,
          View,
          Text,
@@ -20,6 +20,8 @@ export default function App(){
   const[errorMessage, setErrorMessage]=useState('');
   
   const calculate = () => {
+    reset();
+
     if(!capital){
       setErrorMessage("Añade la cantidad que quieres solicitar");
     }else if(!interest){
@@ -37,6 +39,18 @@ export default function App(){
       console.log("Total: ", (fee*months).toFixed(2).replace('.',','));
       console.log(fee * months);*/
     }
+  };
+  useEffect(() => {
+    if(capital && interest && months){
+      calculate();
+    }else{
+      reset();
+    }
+  }, [capital, interest, months])
+
+  const reset = () => {
+    setErrorMessage("");
+    setTotal(null);
   }
 
   return(
@@ -51,7 +65,12 @@ export default function App(){
           setMonths={setMonths}/>
       </SafeAreaView>
 
-      <ResultCalculation errorMessage={errorMessage}/>
+      <ResultCalculation 
+        capital = {capital}
+        interest = {interest}
+        months = {months}
+        total = {total}
+        errorMessage={errorMessage}/>
 
        <Footer calculate={calculate}/>
       
