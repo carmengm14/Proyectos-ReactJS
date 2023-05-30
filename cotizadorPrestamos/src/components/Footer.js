@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
-import colors from '../utils/colors'
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import colors from '../utils/colors';
 
 export default function Footer(props) {
     const {calculate} = props;
@@ -19,8 +19,7 @@ export default function Footer(props) {
 
 const styles = StyleSheet.create({
     viewFooter:{
-        position: 'absolute',
-        top: 370,
+        position: "absolute",
         bottom: 0,
         width: '100%',
         backgroundColor: colors.PRIMARY_COLOR,
